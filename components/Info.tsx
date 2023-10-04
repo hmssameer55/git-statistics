@@ -11,6 +11,7 @@ export default function Info() {
 
     const { githubUser } = useGithub();
     const { public_repos, followers, following, public_gists } = githubUser;
+    console.log('public_repos: ', public_repos);
 
     const items = [
         {
