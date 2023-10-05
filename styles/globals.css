@@ -89,6 +89,14 @@
   @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4;
 }
 
+.repo_layout {
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+}
+
+.repo_card{
+    @apply flex-1 break-inside-avoid rounded-lg border border-gray-200 bg-white overflow-hidden shadow-lg p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-full w-96 h-fit ;
+}
+
 .user_card {
   background-color: #4c2885;
   background-image: linear-gradient(315deg, #4c2885 0%, #4c11ac 100%);
@@ -100,6 +108,8 @@
   padding: 3rem;
   max-width: 800px;
 }
+
+
 
 .user_img {
   border: 10px solid #2a2a72;

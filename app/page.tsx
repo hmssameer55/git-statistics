@@ -1,7 +1,5 @@
-import Card from '@/components/Card'
-import Info from '@/components/Info'
 import Search from '@/components/Search'
-import Image from 'next/image'
+import SearchResults from '@components/SearchResults'
 
 export default function Home() {
   return (
@@ -10,8 +8,7 @@ export default function Home() {
         <span className="blue_gradient">Git Statistics</span>
       </h1>
       <Search />
-      <Info />
-      <Card />
+      <SearchResults />
     </section>
   )
 }

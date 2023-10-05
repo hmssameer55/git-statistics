@@ -7,11 +7,10 @@ import { FiUsers } from "react-icons/fi";
 import { BsStickies } from "react-icons/bs";
 
 
-export default function Info() {
+export default function Info({type}) {
 
-    const { githubUser } = useGithub();
+    const { githubUser, onlyRepos } = useGithub();
     const { public_repos, followers, following, public_gists } = githubUser;
-    console.log('public_repos: ', public_repos);
 
     const items = [
         {
@@ -45,8 +44,23 @@ export default function Info() {
     ];
 
     return (
-        <div className="info_layout">
-            {items.map(({ id, icon, label, color, value }) => (
+        <div className={`${type === "repos" ? "mt-10" : "info_layout"}`}>
+        {type === "repos" ? (
+            <div
+                className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex justify-between items-center w-52"
+            >
+                <div
+                    className={`bg-${items[0].color} w-9 h-9 flex items-center justify-center rounded-full text-white`}
+                >
+                    {items[0].icon}
+                </div>
+                <div className="flex flex-col items-end">
+                    <span className="text-2xl font-bold">{onlyRepos?.total_count}</span>
+                    <span className="text-sm">{items[0].label}</span>
+                </div>
+            </div>
+        ) : (
+            items.map(({ id, icon, label, color, value }) => (
                 <div
                     key={id}
                     className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex justify-between items-center w-52"
@@ -61,8 +75,10 @@ export default function Info() {
                         <span className="text-sm">{label}</span>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))
+        )}
+    </div>
+
     );
 };
 

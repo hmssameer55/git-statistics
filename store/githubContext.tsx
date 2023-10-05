@@ -8,18 +8,25 @@ import toast, { Toaster } from "react-hot-toast";
 export type GithubContextValue = {
     githubUser: any;
     repos: any;
+    onlyRepos: any;
     followers: any;
     requestsCount: number;
     isLoading: boolean;
     error: boolean;
+    BASE_URL: string;
+    searchType: string;
+    searchQuery: string;
     setGithubUser: (value: any) => void;
     setRepos: (value: any) => void;
+    setOnlyRepos: (value: any) => void;
     setFollowers: (value: any) => void;
     setRequestsCount: (value: any) => void;
     setIsLoading: (value: any) => void;
     setError: (value: any) => void;
-    BASE_URL: string;
+    setSearchType: (value: any) => void;
+    setSearchQuery: (value: any) => void;
     fetchUserInfo: (username: string) => void;
+    fetchOnlyRepos: (repoName: string) => void;
 };
 
 export const GithubContext = createContext<GithubContextValue>(
@@ -33,12 +40,15 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
 
     const [githubUser, setGithubUser] = useState([]);
     const [repos, setRepos] = useState([]);
+    const [onlyRepos, setOnlyRepos] = useState([]); 
     const [followers, setFollowers] = useState([]);
     const [requestsCount, setRequestsCount] = useState(0);
-    console.log(requestsCount)
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(true);
     const BASE_URL = "https://api.github.com";
+
+    const [searchType, setSearchType] = useState('users');
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchRequestCount = async () => {
@@ -66,7 +76,7 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
         setError(status);
     }
 
-    const fetchUserInfo = async (username) => {
+    const fetchUserInfo = async (username: string) => {
         setIsLoading(true);
         const { data } = await axios
             .get(`${BASE_URL}/users/${username}`)
@@ -101,24 +111,47 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
     };
 
+    const fetchOnlyRepos = async (repoName: string) => {
+        setIsLoading(true);
+        const { data } = await axios
+            .get(`${BASE_URL}/search/repositories?q=${repoName}&per_page=100`)
+            .catch((err) => {
+                setIsLoading(false);
+                notify("Invalid Username!");
+            });
+        if (data) {
+            setOnlyRepos(data);
+        } else {
+            toggleError(true);
+            notify("Invalid Username!");
+        }
+        setIsLoading(false);
+    }
 
     return (
         <GithubContext.Provider
             value={{
                 githubUser,
                 repos,
+                onlyRepos,
                 followers,
                 requestsCount,
                 isLoading,
                 error,
+                BASE_URL,
+                searchType,
+                searchQuery,
                 setGithubUser,
                 setRepos,
+                setOnlyRepos,
                 setFollowers,
                 setRequestsCount,
                 setIsLoading,
                 setError,
-                BASE_URL,
+                setSearchType,
+                setSearchQuery,
                 fetchUserInfo,
+                fetchOnlyRepos,
             }}
         >
             {children}
