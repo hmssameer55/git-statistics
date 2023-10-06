@@ -50,7 +50,7 @@ export default function Card() {
                     </Link>
                 )}
                 </div>
-                <p className='desc'>
+                <p className='desc w-full md:w-3/4'>
                     {bio}
                 </p>
                 <div className="flex-start mt-4 gap-2">
