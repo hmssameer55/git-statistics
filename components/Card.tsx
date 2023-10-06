@@ -37,11 +37,11 @@ export default function Card() {
                     src={avatar_url}
                     alt="user image"
                     width={200}
-                    height={200}
+                    height={180}
                     className='user_img'
                 />
             </div>
-            <div>
+            <div className='w-full'>
                 <div className='flex-between'>
                 <h3 className='sub_text'>{name}</h3>
                 {html_url && (
