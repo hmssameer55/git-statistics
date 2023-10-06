@@ -52,7 +52,7 @@ export default function RepoCard({ repo }) {
         />
         <div className="ml-4">
           <h3 className="font-bold text-lg break-all">{name}</h3>
-          <p className="text-sm">{description}</p>
+          <p className="text-sm break-all">{description}</p>
         </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function RepoCard({ repo }) {
               >
                 {icon}
               </div>
-              <div className="flex-center gap-1">
+              <div className="flex-center flex-col">
                 <span className="text-md font-bold">{value}</span>
                 <span className="text-sm">{label}</span>
               </div>
