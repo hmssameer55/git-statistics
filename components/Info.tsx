@@ -18,28 +18,24 @@ export default function Info({type}) {
             icon: <RiGitRepositoryLine />,
             label: "repos",
             value: public_repos,
-            color: "#006e1878",
         },
         {
             id: 2,
             icon: <FiUsers />,
             label: "followers",
             value: followers,
-            color: "#e7800178",
         },
         {
             id: 3,
             icon: <RiUserFollowLine />,
             label: "following",
             value: following,
-            color: "#0008ff78",
         },
         {
             id: 4,
             icon: <BsStickies />,
             label: "gists",
             value: public_gists,
-            color: "#ff000078",
         },
     ];
 
@@ -47,10 +43,10 @@ export default function Info({type}) {
         <div className={`${type === "repos" ? "mt-10" : "info_layout"}`}>
         {type === "repos" ? (
             <div
-                className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex justify-between items-center w-52"
+                className="bg-white rounded-lg p-2 shadow-md flex-between w-52"
             >
                 <div
-                    className={`bg-${items[0].color} w-9 h-9 flex items-center justify-center rounded-full text-white`}
+                    className={`w-12 h-12 flex-center rounded-full text-black bg-gray-200`}
                 >
                     {items[0].icon}
                 </div>
@@ -60,13 +56,13 @@ export default function Info({type}) {
                 </div>
             </div>
         ) : (
-            items.map(({ id, icon, label, color, value }) => (
+            items.map(({ id, icon, label, value }) => (
                 <div
                     key={id}
-                    className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex justify-between items-center w-52"
+                    className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex-between w-52"
                 >
                     <div
-                        className={`bg-${color} w-9 h-9 flex items-center justify-center rounded-full text-white`}
+                        className={`w-12 h-12 flex-center rounded-full text-white bg-gray-700`}
                     >
                         {icon}
                     </div>

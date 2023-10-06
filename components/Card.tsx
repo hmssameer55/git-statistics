@@ -1,7 +1,9 @@
 "use client"
 
 import React, { Fragment } from 'react'
+import Link from 'next/link';
 import { useGithub } from '@/store/githubContext';
+import { FiLink } from 'react-icons/fi';
 import Image from 'next/image';
 
 
@@ -40,7 +42,14 @@ export default function Card() {
                 />
             </div>
             <div>
+                <div className='flex-between'>
                 <h3 className='sub_text'>{name}</h3>
+                {html_url && (
+                    <Link href={html_url} target='_blank'>
+                        <FiLink className="text-white" />
+                    </Link>
+                )}
+                </div>
                 <p className='desc'>
                     {bio}
                 </p>

@@ -41,7 +41,7 @@ export default function RepoCard({ repo }) {
 
   return (
     <div className="repo_card">
-      <div className="flex items-center">
+      <div className="flex-center">
         <div className="flex items-start space-x-4">
         <Image
           src={avatar_url}
@@ -51,7 +51,7 @@ export default function RepoCard({ repo }) {
           className="rounded-full"
         />
         <div className="ml-4">
-          <h3 className="font-bold text-lg">{name}</h3>
+          <h3 className="font-bold text-lg break-all">{name}</h3>
           <p className="text-sm">{description}</p>
         </div>
         </div>
@@ -64,36 +64,25 @@ export default function RepoCard({ repo }) {
         </div>
 
       </div>
-      <div className="mt-3 flex justify-between gap-1.5">
+      <div className="mt-3 flex-between gap-1.5">
         {
           items.map(({ id, icon, label, value }) => (
             <div
               key={id}
-              className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex flex-col justify-between items-center w-20"
+              className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex-col-between w-20"
             >
               <div
-                className={`bg-gray-500 w-5 h-5 flex items-center justify-center rounded-full text-white`}
+                className={`bg-gray-500 w-5 h-5 flex-center rounded-full text-white`}
               >
                 {icon}
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex-center gap-1">
                 <span className="text-md font-bold">{value}</span>
                 <span className="text-sm">{label}</span>
               </div>
             </div>
           ))
         }
-        {/* <div className="bg-white bg-opacity-50 rounded-lg p-2 shadow-md flex justify-between items-center">
-          <div
-            className={`bg-gray-500 w-7 h-7 flex items-center justify-center rounded-full text-white`}
-          >
-            <FiUsers />
-          </div>
-          <div className="flex flex-col items-end">
-            <span className="text-xl font-bold">{language}</span>
-            <span className="text-sm">language</span>
-          </div>
-      </div> */}
     </div>
     </div>
   )

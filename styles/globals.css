@@ -55,14 +55,6 @@
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
-.black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
-}
-
-.outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
-}
-
 .head_text {
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
@@ -70,7 +62,6 @@
 .sub_text {
   @apply text-3xl text-white font-semibold sm:text-4xl max-w-2xl;
 }
-
 
 .blue_gradient {
   @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
@@ -80,8 +71,18 @@
   @apply mt-5 text-lg text-white sm:text-xl max-w-2xl;
 }
 
-.search_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+
+.btn_primary{
+  @apply bg-blue-500 text-white py-2 px-4  rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300;
+}
+
+.type_select{
+  @apply py-2 px-3 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 mb-2 md:mb-0 md:mr-2;
+}
+
+.search_input{
+  @apply flex-1 py-2 px-3 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 mb-2 md:mb-0 md:mr-2;
+
 }
 
 
@@ -94,8 +95,10 @@
 }
 
 .repo_card{
-    @apply flex-1 break-inside-avoid rounded-lg border border-gray-200 bg-white overflow-hidden shadow-lg p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-full w-96 h-fit ;
+    @apply flex-1 break-inside-avoid rounded-lg border border-gray-200 bg-white 
+     overflow-hidden shadow-lg p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-full w-80 h-fit ;
 }
+
 
 .user_card {
   background-color: #4c2885;
@@ -110,7 +113,6 @@
 }
 
 
-
 .user_img {
   border: 10px solid #2a2a72;
   border-radius: 50%;
@@ -122,24 +124,8 @@
   @apply text-white text-base font-medium bg-[#2a2a72] rounded-lg px-3 py-1.5;
 }
 
-/* Feed Component */
-.users_feed {
-  @apply mt-12 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-1;
-}
 
-/* Form Component */
-.form_textarea {
-  @apply w-full flex rounded-lg h-[180px] min-h-[100px] max-h-[250px] mt-2 p-3 text-sm text-gray-500 outline-0;
-}
-
-.form_input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
-}
-
-/* Nav Component */
-.logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
-}
+/* Tailwind Utilities */
 
 .flex-center {
   @apply flex justify-center items-center;
@@ -157,6 +143,13 @@
   @apply flex justify-between items-center;
 }
 
+.flex-col-between {
+  @apply flex flex-col justify-between items-center;
+}
+
+.flex-col-row {
+  @apply flex flex-col md:flex-row md:items-center;
+}
 
 @media screen and (max-width: 640px) {
   .user_card {
